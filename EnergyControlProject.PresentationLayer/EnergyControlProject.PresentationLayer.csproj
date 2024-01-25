@@ -14,6 +14,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EnergyControlProject.DataAccessLayer\EnergyControlProject.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\EnergyControlProject.DtoLayer\EnergyControlProject.DtoLayer.csproj" />
+    <ProjectReference Include="..\EnergyControlProject.EntityLayer\EnergyControlProject.EntityLayer.csproj" />
+    <ProjectReference Include="..\EnergyControlProjectBusinessLayer\EnergyControlProjectBusinessLayer.csproj" />
   </ItemGroup>
 
 </Project>

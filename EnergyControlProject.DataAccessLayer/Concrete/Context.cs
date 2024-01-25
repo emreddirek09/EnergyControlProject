@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace EnergyControlProject.DataAccessLayer.Concrete
 {
-    public class Context:IdentityDbContext
+    public class Context: IdentityDbContext<AppUser, AppRole, int>
     {
+        //IdentityDbContext<AppUser,AppRole,int>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS; initial catalog=EnergyControlDb; integrated Security=true;  TrustServerCertificate=True");

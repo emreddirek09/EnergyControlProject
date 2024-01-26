@@ -4,6 +4,7 @@ using EnergyControlProject.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnergyControlProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240126083548_mig_tables")]
+    partial class mig_tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,29 +24,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.Akaryakit", b =>
-                {
-                    b.Property<int>("AkaryakitID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AkaryakitID"));
-
-                    b.Property<decimal>("AkaryakitAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("AkaryakitCarPlaka")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("AkaryakitDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("AkaryakitID");
-
-                    b.ToTable("Akaryakits");
-                });
 
             modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.AppRole", b =>
                 {
@@ -175,26 +155,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.CarTypes", b =>
-                {
-                    b.Property<int>("CarTypesID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarTypesID"));
-
-                    b.Property<string>("CarTypesName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CarTypesStatus")
-                        .HasColumnType("int");
-
-                    b.HasKey("CarTypesID");
-
-                    b.ToTable("CarTypeses");
-                });
-
             modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.CustomerAccount", b =>
                 {
                     b.Property<int>("CustomerAccountID")
@@ -245,95 +205,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                     b.HasKey("CustomerAccountProcessID");
 
                     b.ToTable("CustomerAccountProcesses");
-                });
-
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.CustomerCar", b =>
-                {
-                    b.Property<int>("CustomerCarID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerCarID"));
-
-                    b.Property<DateTime>("CustomerCarDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomerCarEnergyType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerCarPlaka")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerCarType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CustomerCarID");
-
-                    b.ToTable("CustomerCars");
-                });
-
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.CustomerWallet", b =>
-                {
-                    b.Property<int>("CustomerWalletID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerWalletID"));
-
-                    b.Property<string>("CustomerWalletAmount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CustomerWalletDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomerWalletName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CustomerWalletID");
-
-                    b.ToTable("CustomerWallet");
-                });
-
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.EnergyTypes", b =>
-                {
-                    b.Property<int>("EnergyTypesID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EnergyTypesID"));
-
-                    b.Property<string>("EnergyTypesName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EnergyTypesStatus")
-                        .HasColumnType("int");
-
-                    b.HasKey("EnergyTypesID");
-
-                    b.ToTable("EnergyTypeses");
-                });
-
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.Status", b =>
-                {
-                    b.Property<int>("StatusID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StatusID"));
-
-                    b.Property<string>("StatusName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("StatusID");
-
-                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

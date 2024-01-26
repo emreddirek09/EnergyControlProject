@@ -18,5 +18,12 @@ namespace EnergyControlProject.DataAccessLayer.Concrete
         }
         public DbSet<CustomerAccount> CustomerAccounts { get; set; }
         public DbSet<CustomerAccountProcess> CustomerAccountProcesses { get; set; }
+
+        public DbSet<Akaryakit> Akaryakits { get; set; }
+        public DbSet<CarTypes> CarTypeses { get; set; }
+        public DbSet<CustomerCar> CustomerCars { get; set; }
+        public DbSet<CustomerWallet> CustomerWallet { get; set; }
+        public DbSet<EnergyTypes> EnergyTypeses { get; set; }
+        public DbSet<Status> Statuses { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using EnergyControlProject.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnergyControlProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240126125040_mig_relation")]
+    partial class mig_relation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,10 +146,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StatusCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
-
                     b.Property<string>("SurName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -205,10 +204,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
 
                     b.Property<int>("AppUserID")
                         .HasColumnType("int");
-
-                    b.Property<string>("BankBranch")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerAccountBalance")
                         .IsRequired()
@@ -336,11 +331,16 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StatusID"));
 
+                    b.Property<int>("AppUserID")
+                        .HasColumnType("int");
+
                     b.Property<string>("StatusName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StatusID");
+
+                    b.HasIndex("AppUserID");
 
                     b.ToTable("Statuses");
                 });
@@ -459,6 +459,17 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.Status", b =>
+                {
+                    b.HasOne("EnergyControlProject.EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Statuses")
+                        .HasForeignKey("AppUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("EnergyControlProject.EntityLayer.Concrete.AppRole", null)
@@ -513,6 +524,8 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
             modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.AppUser", b =>
                 {
                     b.Navigation("CustomerAccounts");
+
+                    b.Navigation("Statuses");
                 });
 #pragma warning restore 612, 618
         }

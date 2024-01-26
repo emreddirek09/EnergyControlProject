@@ -16,9 +16,9 @@ namespace EnergyControlProject.DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS; initial catalog=EnergyControlDb; integrated Security=true;  TrustServerCertificate=True");
         }
+         
         public DbSet<CustomerAccount> CustomerAccounts { get; set; }
         public DbSet<CustomerAccountProcess> CustomerAccountProcesses { get; set; }
-
         public DbSet<Akaryakit> Akaryakits { get; set; }
         public DbSet<CarTypes> CarTypeses { get; set; }
         public DbSet<CustomerCar> CustomerCars { get; set; }

@@ -17,5 +17,6 @@ namespace EnergyControlProject.EntityLayer.Concrete
         public string ImageUrl { get; set; }     
         public string Address { get; set; }           
         public char  StatusCode { get; set; }
+        public List<CustomerAccount> CustomerAccounts { get; set; }
     }
 }

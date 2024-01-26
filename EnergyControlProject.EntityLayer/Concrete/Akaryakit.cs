@@ -11,6 +11,8 @@ namespace EnergyControlProject.EntityLayer.Concrete
         public int AkaryakitID { get; set; }
         public string AkaryakitCarPlaka { get; set; }
         public decimal AkaryakitAmount { get; set; }
+        public int AkaryakitCustomerCarsID { get; set; }
+        public CustomerCar AkaryakitCustomerCars { get; set; }
         public DateTime AkaryakitDate { get; set; }
 
     }

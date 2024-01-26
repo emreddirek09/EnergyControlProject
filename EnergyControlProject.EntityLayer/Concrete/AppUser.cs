@@ -16,7 +16,10 @@ namespace EnergyControlProject.EntityLayer.Concrete
         public string City { get; set; }     
         public string ImageUrl { get; set; }     
         public string Address { get; set; }           
-        public char  StatusCode { get; set; }
+        public int  StatusCode { get; set; }
         public List<CustomerAccount> CustomerAccounts { get; set; }
+        public List<Status> Statuses { get; set; }
+        public List<CustomerCar> CustomerCars { get; set; }
+        public List<CustomerWallet> CustomerWallets { get; set; }
     }
 }

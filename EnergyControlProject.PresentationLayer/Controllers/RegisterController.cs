@@ -31,11 +31,11 @@ namespace EnergyControlProject.PresentationLayer.Controllers
                     SurName = appUserRegisterDto.Surname,
                     Email= appUserRegisterDto.Email,
                     StatusCode=1,
-                    City="aaa",
-                    District="aaa",
-                    ImageUrl="aaa",
-                    Address="aa",
-                    TCKN="11111111111"
+                    City= appUserRegisterDto.City,
+                    District= appUserRegisterDto.District,
+                    ImageUrl="xxx",
+                    Address= appUserRegisterDto.Address,
+                    TCKN= appUserRegisterDto.TCKN
                 };
 
                 var result = await _userManager.CreateAsync(appUser,appUserRegisterDto.Password);

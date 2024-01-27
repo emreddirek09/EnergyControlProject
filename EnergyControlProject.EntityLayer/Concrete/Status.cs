@@ -9,8 +9,6 @@ namespace EnergyControlProject.EntityLayer.Concrete
     public class Status
     {
         public int StatusID { get; set; }
-        public string StatusName { get; set; }
-        public int AppUserID { get; set; }
-        public AppUser AppUser { get; set; }
+        public string StatusName { get; set; } 
     }
 }

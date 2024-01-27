@@ -29,11 +29,11 @@ namespace EnergyControlProject.PresentationLayer.Controllers
             if (result.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(loginViewModel.Username);
-                if (user.StatusCode == 2)
+                if (user.StatusCode == 2 || user.StatusCode == 1)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "CustomerAccount");
                 }
-               // Lütfen kayıt onay süreci için bekleyiniz.
+                // Lütfen kayıt onay süreci için bekleyiniz.
             }
             //kullanıcı adı veya şifre hatalıı
             return View();

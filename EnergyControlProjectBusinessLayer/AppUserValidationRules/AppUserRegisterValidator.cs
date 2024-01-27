@@ -20,6 +20,7 @@ namespace EnergyControlProjectBusinessLayer.AppUserValidationRules
             RuleFor(x => x.ConfirmPassword).NotEmpty().WithMessage("Şifre tekrar alanı boş geçilemez");
             RuleFor(x=>x.ConfirmPassword).Equal(y=>y.Password).WithMessage("Şifreler eşleşmiyor");
             RuleFor(x => x.Email).EmailAddress().WithMessage("Lütfen geçerli bir mail adresi giriniz");
+
         }
     }
 }

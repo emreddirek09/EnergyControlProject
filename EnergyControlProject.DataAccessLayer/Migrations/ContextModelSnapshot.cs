@@ -465,7 +465,7 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
             modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.Akaryakit", b =>
                 {
                     b.HasOne("EnergyControlProject.EntityLayer.Concrete.CustomerCar", "AkaryakitCustomerCars")
-                        .WithMany("Akaryakits")
+                        .WithMany()
                         .HasForeignKey("AkaryakitCustomerCarsID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -564,11 +564,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                     b.Navigation("CustomerCars");
 
                     b.Navigation("CustomerWallets");
-                });
-
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.CustomerCar", b =>
-                {
-                    b.Navigation("Akaryakits");
                 });
 #pragma warning restore 612, 618
         }

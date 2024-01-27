@@ -14,7 +14,6 @@ namespace EnergyControlProject.EntityLayer.Concrete
         public string CustomerCarEnergyType { get; set;}
         public int AppUserID { get; set; }
         public AppUser AppUser { get; set; }
-        public DateTime CustomerCarDate { get; set; }
-        public List<Akaryakit> Akaryakits { get; set; }
+        public DateTime CustomerCarDate { get; set; } 
     }
 }

@@ -9,5 +9,6 @@ namespace EnergyControlProject.DataAccessLayer.Abstract
 {
     public interface ICustomerWalletDal:IGenericDal<CustomerWallet>
     {
+        List<CustomerWallet> MyCustomerWalletById(int i);
     }
 }

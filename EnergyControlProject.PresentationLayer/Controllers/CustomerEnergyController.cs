@@ -39,6 +39,9 @@ namespace EnergyControlProject.PresentationLayer.Controllers
             var MyWalletList = WalletList.Select(s => new { Id = s.WalletTypesID, Name = s.WalletName });
             ViewBag.MyWalletLists = new SelectList(MyWalletList, "Id", "Name");
 
+            var customerWalletList = _customerWaalletService.TMyCustomerWalletById(user.Id).ToList();
+            ViewBag.CcustomerWalletList = customerWalletList;
+
             return View();
         }
 

@@ -1,4 +1,5 @@
 ﻿using EnergyControlProject.DataAccessLayer.Abstract;
+using EnergyControlProject.DataAccessLayer.EntityFramework;
 using EnergyControlProject.EntityLayer.Concrete;
 using EnergyControlProjectBusinessLayer.Abstract;
 using System;
@@ -36,6 +37,10 @@ namespace EnergyControlProjectBusinessLayer.Concrete
         public void TInsert(CustomerWallet t)
         {
             _customerWalletDal.Insert(t);
+        }
+        public List<CustomerWallet> TMyCustomerWalletById(int i)
+        {
+            return _customerWalletDal.MyCustomerWalletById(i);
         }
 
         public void TUpdate(CustomerWallet t)

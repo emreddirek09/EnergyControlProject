@@ -9,5 +9,6 @@ namespace EnergyControlProjectBusinessLayer.Abstract
 {
     public interface ICustomerWaalletService : IGenericService<CustomerWallet>
     {
+        List<CustomerWallet> TMyCustomerWalletById(int i);
     }
 }

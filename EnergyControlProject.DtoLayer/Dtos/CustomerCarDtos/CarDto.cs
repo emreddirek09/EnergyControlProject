@@ -9,7 +9,8 @@ namespace EnergyControlProject.DtoLayer.Dtos.CustomerCarDtos
     public class CarDto
     {
         public string CustomerCarPlaka { get; set; }
-        public string CustomerCarType { get; set; }
-        public string CustomerCarEnergyType { get; set; } 
+        public int CustomerCarType { get; set; }
+        public int CustomerCarEnergyType { get; set; } 
+        public DateTime DateTime { get; set; }
     }
 }

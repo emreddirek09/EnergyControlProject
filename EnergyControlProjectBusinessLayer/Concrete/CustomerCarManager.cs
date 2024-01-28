@@ -38,6 +38,11 @@ namespace EnergyControlProjectBusinessLayer.Concrete
             _customerCarDal.Insert(t);
         }
 
+        public List<CustomerCar> TMyCustomerCarById(int i)
+        {
+            return _customerCarDal.MyCustomerCarById(i);
+        }
+
         public void TUpdate(CustomerCar t)
         {
             _customerCarDal.Update(t);

@@ -9,5 +9,6 @@ namespace EnergyControlProject.DataAccessLayer.Abstract
 {
     public interface ICustomerCarDal:IGenericDal<CustomerCar>
     {
+        List<CustomerCar> MyCustomerCarById(int i);
     }
 }

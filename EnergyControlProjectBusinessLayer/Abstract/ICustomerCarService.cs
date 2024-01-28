@@ -9,5 +9,6 @@ namespace EnergyControlProjectBusinessLayer.Abstract
 {
     public interface ICustomerCarService : IGenericService<CustomerCar>
     {
+        List<CustomerCar> TMyCustomerCarById(int i);
     }
 }

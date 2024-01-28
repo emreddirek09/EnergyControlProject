@@ -12,15 +12,13 @@ namespace EnergyControlProject.PresentationLayer.Controllers
 {
     public class CustomerCarController : Controller
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager; 
         private readonly Context _context;
         private readonly ICustomerCarService _customerCarService;
 
-        public CustomerCarController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, Context context, ICustomerCarService customerCarService)
+        public CustomerCarController(UserManager<AppUser> userManager, Context context, ICustomerCarService customerCarService)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _userManager = userManager; 
             _context = context;
             _customerCarService = customerCarService;
         }
@@ -65,6 +63,10 @@ namespace EnergyControlProject.PresentationLayer.Controllers
 
                 return RedirectToAction("Index", "CustomerCar");
 
+            }
+            else
+            {
+                return RedirectToAction("Index", "CustomerCar");
             }
 
             return View();

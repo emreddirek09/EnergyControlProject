@@ -20,9 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\AppRoleDtos\" />
-    <Folder Include="Dtos\CustomerAAccountDtos\" />
-    <Folder Include="Dtos\CustomerAAccountProcessDtos\" />
+    <Folder Include="Dtos\CustomerYakitDtos\" />
   </ItemGroup>
 
 </Project>

@@ -25,6 +25,7 @@ namespace EnergyControlProject.DataAccessLayer.Concrete
         public DbSet<CustomerWallet> CustomerWallet { get; set; }
         public DbSet<EnergyTypes> EnergyTypeses { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<WalletTypes>  WalletTypes { get; set; }
 
 
     }

@@ -1,84 +1,138 @@
-﻿@{
+﻿@model EnergyControlProject.DtoLayer.Dtos.CustomerWalletDtos.CustomerWalletDto
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/RegisterProfil/Index.cshtml";
 }
 
 <div class="right_col" role="main">
     <div class="">
-        <div class="page-title">
-            <div class="title_left">
-                <h2>Müşteri Araç Yakıt Bilgileri</h2>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Müşteri Araç Yakıt Bilgileri </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
 
-@*                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Müşteri Araç Bilgileri <small>different form elements</small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            <a href="#">Settings 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <br />
-                            <form class="form-horizontal form-label-left">
-
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Plaka</label>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" name="Plaka" id="autocomplete-custom-append" class="form-control col-md-10" />
+                        <br />
+                        <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                             
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Araç Seçiniz</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <div class="form-group">
+                                        <select asp-for="CarPlaka" asp-items="@ViewBag.CcustomerCarList" class="form-control"></select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Araç Tipi</label>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control">
-                                            <option>Choose option</option>
-                                            <option>Option one</option>
-                                        </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Ödeme Yöntemi Seçiniz</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <div class="form-group">
+                                        <select asp-for="WalletName" asp-items="@ViewBag.MyWalletLists" class="form-control"></select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Yakıt Tipi</label>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="select2_single form-control" tabindex="-1">
-                                            <option></option>
-                                            <option value="AK">Alaska</option>
-                                            <option value="HI">Hawaii</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">İşlem Tutarı</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" asp-for="WalletAmount" id="autocomplete-custom-append" class="form-control col-md-10" />
                                 </div>
+                            </div>
 
-                                <div class="ln_solid"></div>
-                                <div class="form-group">
-                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                        <button type="submit" class="btn btn-success">Kaydet</button>
-                                    </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-success">Kaydet</button>
                                 </div>
+                            </div>
 
-                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Araçlarım</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+
+                                    <table id="datatable-keytable" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Plaka</th>
+                                                <th>Araç Tipi</th>
+                                                <th>Yakıt Tipi</th>
+                                                <th>Kayıt Tarihi</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                           @*  @foreach (var item in ViewBag.customerCarList)
+                                            {
+                                                <tr>
+                                                    <td>@item.CustomerCarPlaka</td>
+                                                    <td>@item.CarTypes.CarTypesName</td>
+                                                    <td>@item.EnergyTypes.EnergyTypesName</td>
+                                                    <td>@item.CustomerCarDate</td>
+                                                </tr>
+                                            } *@
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div> *@
+                </div>
             </div>
+
         </div>
     </div>
 </div>
-
-
-

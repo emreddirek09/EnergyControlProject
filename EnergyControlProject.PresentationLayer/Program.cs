@@ -16,6 +16,10 @@ builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context
 
 builder.Services.AddScoped<ICustomerCarDal, EfCustomerCarDal>();
 builder.Services.AddScoped<ICustomerCarService, CustomerCarManager>();
+builder.Services.AddScoped<ICustomerWalletDal, EfCustomerWalletDal>();
+builder.Services.AddScoped<ICustomerWaalletService, CustomerWalletManager>();
+builder.Services.AddScoped<IWalletTypesDal, EfWalletTypesDal>();
+builder.Services.AddScoped<IWalletTypesService, WalletTypesManager>();
 
 var app = builder.Build();
 

@@ -13,7 +13,7 @@ namespace EnergyControlProject.EntityLayer.Concrete
         public string CustomerWalletAmount { get; set;}
         public int AppUserID { get; set; }
         public AppUser AppUser { get; set; }
-        public DateTime CustomerWalletDate { get; set;}
+        public List<WalletTypes> WalletTypes { get; set; }  
 
     }
 }

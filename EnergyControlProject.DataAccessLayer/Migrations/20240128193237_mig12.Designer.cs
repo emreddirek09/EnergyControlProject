@@ -4,6 +4,7 @@ using EnergyControlProject.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnergyControlProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240128193237_mig12")]
+    partial class mig12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -313,6 +316,9 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CustomerWalletDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("CustomerWalletName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -331,6 +337,16 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EnergyTypesID"));
+
+                    b.Property<string>("CustomerCarPlaka")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("EnergyAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("EnergyDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("EnergyTypesName")
                         .IsRequired()
@@ -356,37 +372,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                     b.HasKey("StatusID");
 
                     b.ToTable("Statuses");
-                });
-
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.WalletTypes", b =>
-                {
-                    b.Property<int>("WalletTypesID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WalletTypesID"));
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("CustomerWalletID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("FirstDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("LastDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("WalletName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("WalletTypesID");
-
-                    b.HasIndex("CustomerWalletID");
-
-                    b.ToTable("WalletTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -550,17 +535,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.WalletTypes", b =>
-                {
-                    b.HasOne("EnergyControlProject.EntityLayer.Concrete.CustomerWallet", "CustomerWallet")
-                        .WithMany("WalletTypes")
-                        .HasForeignKey("CustomerWalletID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CustomerWallet");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("EnergyControlProject.EntityLayer.Concrete.AppRole", null)
@@ -624,11 +598,6 @@ namespace EnergyControlProject.DataAccessLayer.Migrations
             modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.CarTypes", b =>
                 {
                     b.Navigation("CustomerCars");
-                });
-
-            modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.CustomerWallet", b =>
-                {
-                    b.Navigation("WalletTypes");
                 });
 
             modelBuilder.Entity("EnergyControlProject.EntityLayer.Concrete.EnergyTypes", b =>

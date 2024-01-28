@@ -10,12 +10,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EnergyControlProject.PresentationLayer.Controllers
 {
-    public class CustomerCarController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, Context context) : Controller
+    public class CustomerCarController: Controller
     {
-        private readonly UserManager<AppUser> _userManager = userManager;
-        private readonly SignInManager<AppUser> _signInManager = signInManager;
-        private readonly Context _context = context;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly Context _context;
         private readonly ICustomerCarService _customerCarService;
+
+        public CustomerCarController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, Context context, ICustomerCarService customerCarService)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _context = context;
+            _customerCarService = customerCarService;
+        }
 
         [HttpGet]
         public IActionResult Index()
@@ -29,6 +37,7 @@ namespace EnergyControlProject.PresentationLayer.Controllers
             ViewBag.CarList = new SelectList(carNames, "Id", "Name");
             ViewBag.EnergyList = new SelectList(energyTypeses, "Id", "Name");
 
+            var customerCarList = _customerCarService.TGetList();
             return View();
         }
 
@@ -39,16 +48,15 @@ namespace EnergyControlProject.PresentationLayer.Controllers
             {
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 CustomerCar customerCar = new CustomerCar()
-                { 
+                {  
                     AppUserID= user.Id,
                     CustomerCarDate = DateTime.Now, 
                     CustomerCarPlaka=carDto.CustomerCarPlaka,
                     CustomerCarType=carDto.CustomerCarType,
-                    CustomerCarEnergyType=carDto.CustomerCarEnergyType, 
-                    AppUser=user                
+                    CustomerCarEnergyType=carDto.CustomerCarEnergyType          
                     
                 };
-
+                
                 _customerCarService.TInsert(customerCar);
 
                 return RedirectToAction("Index","CustomerCar");

@@ -55,7 +55,9 @@ namespace EnergyControlProject.PresentationLayer.Controllers
                     CustomerCarDate = DateTime.Now,
                     CustomerCarPlaka = carDto.CustomerCarPlaka,
                     CustomerCarType = carDto.CustomerCarType,
-                    CustomerCarEnergyType = carDto.CustomerCarEnergyType
+                    CustomerCarEnergyType = carDto.CustomerCarEnergyType,
+                    CarTypesID = carDto.CustomerCarType,
+                    EnergyTypesID = carDto.CustomerCarEnergyType
 
                 };
 

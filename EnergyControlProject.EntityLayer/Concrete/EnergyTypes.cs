@@ -11,6 +11,7 @@ namespace EnergyControlProject.EntityLayer.Concrete
         //SelectBox
         public int EnergyTypesID { get; set; }
         public string EnergyTypesName { get; set; }
-        public int EnergyTypesStatus { get; set; }
+
+        public List<CustomerCar> CustomerCars { get; set; }
     }
 }

@@ -10,7 +10,8 @@ namespace EnergyControlProject.EntityLayer.Concrete
     {
         //SelectBox
         public int CarTypesID { get; set; }
-        public string CarTypesName { get; set;}
-        public int CarTypesStatus { get; set; }
+        public string CarTypesName { get; set;} 
+
+        public List<CustomerCar> CustomerCars { get; set; }
     }
 }

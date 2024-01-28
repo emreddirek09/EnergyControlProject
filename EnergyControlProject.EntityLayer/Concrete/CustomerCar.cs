@@ -14,8 +14,10 @@ namespace EnergyControlProject.EntityLayer.Concrete
         public int CustomerCarType { get; set; }
         public int CustomerCarEnergyType { get; set; }
         public int AppUserID { get; set; }
-        public List<EnergyTypes> energyTypes { get; set; }
-        public List<CarTypes> carTypes { get; set; }
+        public int EnergyTypesID { get; set; }
+        public EnergyTypes EnergyTypes { get; set; }
+        public int CarTypesID { get; set; }
+        public CarTypes CarTypes { get; set; }
         public DateTime CustomerCarDate { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace EnergyControlProject.DataAccessLayer.EntityFramework
         public List<CustomerCar> MyCustomerCarById(int i)
         {
             using var context = new Context();
-            var values = context.CustomerCars.Include(y=>y.carTypes).Include(z=>z.energyTypes).Where(x => x.AppUserID == i).ToList();
+            var values = context.CustomerCars.Include(y=>y.EnergyTypes).Include(z=>z.CarTypes).Where(x => x.AppUserID == i).ToList();
             return values;
         }
     }

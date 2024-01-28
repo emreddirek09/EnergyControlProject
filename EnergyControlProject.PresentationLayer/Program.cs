@@ -1,14 +1,22 @@
+using EnergyControlProject.DataAccessLayer.Abstract;
 using EnergyControlProject.DataAccessLayer.Concrete;
+using EnergyControlProject.DataAccessLayer.EntityFramework;
 using EnergyControlProject.DtoLayer.Dtos.AppUserDtos;
 using EnergyControlProject.EntityLayer.Concrete;
 using EnergyControlProject.PresentationLayer.Models;
+using EnergyControlProjectBusinessLayer.Abstract;
+using EnergyControlProjectBusinessLayer.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>();
-builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>(); 
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
+
+builder.Services.AddScoped<ICustomerCarDal, EfCustomerCarDal>();
+builder.Services.AddScoped<ICustomerCarService, CustomerCarManager>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
